@@ -11,6 +11,10 @@ PROJECT_DIR="$(pwd)/$PROJECT_NAME"
 mkdir -p "$PROJECT_DIR/src"
 mkdir -p "$PROJECT_DIR/build"
 
+cat <<EOF > "$PROJECT_DIR/.gitignore"
+/build
+EOF
+
 cat <<EOF > "$PROJECT_DIR/src/main.c"
 #include <stdio.h>
 
