@@ -41,4 +41,4 @@ default: compile
 	@./\$(EXECUTABLE)
 EOF
 
-echo "Project '$PROJECT_NAME' created in $PROJECT_DIR!"
+echo "Project '$PROJECT_NAME' created in $PROJECT_DIR"
