@@ -19,6 +19,3 @@ Thats it.
 ## Example
 <img width="555" alt="image" src="https://github.com/user-attachments/assets/17efdd44-1de4-4539-ac65-2f465ac16470" />
 
-
-
-Windows is currently in work, just use linux though ;)
