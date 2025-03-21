@@ -34,4 +34,4 @@ echo compile: $(BUILD_DIR) >> "%PROJECT_DIR%\Makefile"
 echo     @$(CC) $(SRC) -o $(EXECUTABLE) $(CFLAGS) >> "%PROJECT_DIR%\Makefile"
 echo. >> "%PROJECT_DIR%\Makefile"
 echo Using cnew version 1
-echo Project '%PROJECT_NAME%' created in %PROJECT_DIR%
+echo (v1) - Project '%PROJECT_NAME%' created in %PROJECT_DIR%

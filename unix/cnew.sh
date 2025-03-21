@@ -39,5 +39,4 @@ compile: \$(BUILD_DIR)
 
 EOF
 
-echo Using cnew version 1
-echo "Project '$PROJECT_NAME' created in $PROJECT_DIR"
+echo "(v1) - Project '$PROJECT_NAME' created in $PROJECT_DIR"
