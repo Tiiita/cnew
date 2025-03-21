@@ -31,14 +31,13 @@ CC := gcc
 CFLAGS := -O3 -fvisibility=hidden
 SRC := \$(wildcard src/*.c)
 
-\$(BUILD_DIR): 
-	@mkdir -p \$(BUILD_DIR)
+default: compile
+	@./\$(EXECUTABLE)
 
 compile: \$(BUILD_DIR)
 	@\$(CC) \$(SRC) -o \$(EXECUTABLE) \$(CFLAGS)
 
-default: compile
-	@./\$(EXECUTABLE)
 EOF
 
+echo Using cnew version 1
 echo "Project '$PROJECT_NAME' created in $PROJECT_DIR"
