@@ -1,38 +1,37 @@
 @echo off
-setlocal EnableDelayedExpansion
+setlocal
 
 if "%1"=="" (
-    echo Usage: cnew ^<project_name^>
+    echo (v1.0.0) Usage: cnew <project_name>
     exit /b 1
 )
 
-set "PROJECT_NAME=%1"
-set "PROJECT_DIR=%CD%\%PROJECT_NAME%"
+set PROJECT_NAME=%1
+set PROJECT_DIR=%cd%\%PROJECT_NAME%
 
-mkdir "%PROJECT_DIR%\src" 2>nul
-mkdir "%PROJECT_DIR%\build" 2>nul
+mkdir "%PROJECT_DIR%\src"
+mkdir "%PROJECT_DIR%\build"
 
 echo /build > "%PROJECT_DIR%\.gitignore"
 
-echo #include ^<stdio.h^> > "%PROJECT_DIR%\src\main.c"
+echo #include <stdio.h> > "%PROJECT_DIR%\src\main.c"
 echo. >> "%PROJECT_DIR%\src\main.c"
 echo int main() { >> "%PROJECT_DIR%\src\main.c"
-echo     printf("Hello, World!\n"); >> "%PROJECT_DIR%\src\main.c"
+echo     printf("Hello, World!^\\n"); >> "%PROJECT_DIR%\src\main.c"
 echo     return 0; >> "%PROJECT_DIR%\src\main.c"
 echo } >> "%PROJECT_DIR%\src\main.c"
 
-echo BUILD_DIR := build > "%PROJECT_DIR%\Makefile"
-echo EXECUTABLE := $(BUILD_DIR)/%PROJECT_NAME%.exe >> "%PROJECT_DIR%\Makefile"
-echo CC := gcc >> "%PROJECT_DIR%\Makefile"
-echo CFLAGS := -O3 -fvisibility=hidden >> "%PROJECT_DIR%\Makefile"
-echo SRC := $(wildcard src/*.c) >> "%PROJECT_DIR%\Makefile"
-echo. >> "%PROJECT_DIR%\Makefile"
+echo cmake_minimum_required(VERSION 3.10) > "%PROJECT_DIR%\CMakeLists.txt"
+echo. >> "%PROJECT_DIR%\CMakeLists.txt"
+echo project(%PROJECT_NAME% VERSION 1.0 LANGUAGES C) >> "%PROJECT_DIR%\CMakeLists.txt"
+echo. >> "%PROJECT_DIR%\CMakeLists.txt"
+echo set(CMAKE_BINARY_DIR \${CMAKE_SOURCE_DIR}/build) >> "%PROJECT_DIR%\CMakeLists.txt"
+echo. >> "%PROJECT_DIR%\CMakeLists.txt"
+echo file(GLOB SOURCES "src/*.c") >> "%PROJECT_DIR%\CMakeLists.txt"
+echo. >> "%PROJECT_DIR%\CMakeLists.txt"
+echo add_executable(%PROJECT_NAME% \${SOURCES}) >> "%PROJECT_DIR%\CMakeLists.txt"
 
-echo default: compile >> "%PROJECT_DIR%\Makefile"
-echo     @./$(EXECUTABLE) >> "%PROJECT_DIR%\Makefile"
-echo. >> "%PROJECT_DIR%\Makefile"
-echo compile: $(BUILD_DIR) >> "%PROJECT_DIR%\Makefile"
-echo     @$(CC) $(SRC) -o $(EXECUTABLE) $(CFLAGS) >> "%PROJECT_DIR%\Makefile"
-echo. >> "%PROJECT_DIR%\Makefile"
+echo Project '%PROJECT_NAME%' created in %PROJECT_DIR%
+echo You can now build your project using CMake!
 
-echo (v1) - Project '%PROJECT_NAME%' created in %PROJECT_DIR%
+endlocal
