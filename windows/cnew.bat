@@ -22,7 +22,7 @@ echo     return 0; >> "%PROJECT_DIR%\src\main.c"
 echo } >> "%PROJECT_DIR%\src\main.c"
 
 echo BUILD_DIR := build > "%PROJECT_DIR%\Makefile"
-echo EXECUTABLE := $(BUILD_DIR)/%PROJECT_NAME% >> "%PROJECT_DIR%\Makefile"
+echo EXECUTABLE := $(BUILD_DIR)/%PROJECT_NAME%.exe >> "%PROJECT_DIR%\Makefile"
 echo CC := gcc >> "%PROJECT_DIR%\Makefile"
 echo CFLAGS := -O3 -fvisibility=hidden >> "%PROJECT_DIR%\Makefile"
 echo SRC := $(wildcard src/*.c) >> "%PROJECT_DIR%\Makefile"
