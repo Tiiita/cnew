@@ -13,7 +13,7 @@ if errorlevel 1 (
     setx PATH "%TARGET_DIR%;%PATH%" /M
 )
 
-echo Done!
-echo.
+echo Done! You can now use 'cnew' from any terminal.
+echo Restart your terminal in order to use `cnew`
 echo Press Enter to exit...
 pause >nul
