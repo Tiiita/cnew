@@ -1,7 +1,6 @@
 ## C Project Creator
 
-A simple script which lets you create new projects in the C language much easier. It creates a gitignore, main.c and Makefile (makefile compiles using GCC by default)
-
+A simple script which lets you create new projects in the C language much easier. It creates a gitignore, main.c and CMakeLists.txt to compile
 ### How to use it:
 
 Clone the repository using ``git clone https://github.com/Tiiita/cnew.git`` 
