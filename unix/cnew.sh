@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-    echo "Usage: cnew <project_name>"
+    echo "(v1.0.0) Usage: cnew <project_name>"
     exit 1
 fi
 
@@ -24,19 +24,17 @@ int main() {
 }
 EOF
 
-cat <<EOF > "$PROJECT_DIR/Makefile"
-BUILD_DIR := build
-EXECUTABLE := \$(BUILD_DIR)/$PROJECT_NAME
-CC := gcc
-CFLAGS := -O3 -fvisibility=hidden
-SRC := \$(wildcard src/*.c)
+cat <<EOF > "$PROJECT_DIR/CMakeLists.txt"
+cmake_minimum_required(VERSION 3.10)
 
-default: compile
-	@./\$(EXECUTABLE)
+project($PROJECT_NAME VERSION 1.0 LANGUAGES C)
 
-compile: \$(BUILD_DIR)
-	@\$(CC) \$(SRC) -o \$(EXECUTABLE) \$(CFLAGS)
+set(CMAKE_BINARY_DIR \${CMAKE_SOURCE_DIR}/build)
 
+file(GLOB SOURCES "src/*.c")
+
+add_executable($PROJECT_NAME \${SOURCES})
 EOF
 
-echo "(v1) - Project '$PROJECT_NAME' created in $PROJECT_DIR"
+echo "Project '$PROJECT_NAME' created in $PROJECT_DIR"
+echo "You can now build your project using CMake!"
