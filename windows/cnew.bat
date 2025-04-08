@@ -14,7 +14,7 @@ mkdir "%PROJECT_DIR%\build" 2>nul
 
 echo /build > "%PROJECT_DIR%\.gitignore"
 
-echo #include <stdio.h> > "%PROJECT_DIR%\src\main.c"
+echo #include ^<stdio.h^> > "%PROJECT_DIR%\src\main.c"
 echo. >> "%PROJECT_DIR%\src\main.c"
 echo int main() { >> "%PROJECT_DIR%\src\main.c"
 echo     printf("Hello, World!^\\n"); >> "%PROJECT_DIR%\src\main.c"
