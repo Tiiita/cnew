@@ -9,10 +9,13 @@ PROJECT_NAME=$1
 PROJECT_DIR="$(pwd)/$PROJECT_NAME"
 
 mkdir -p "$PROJECT_DIR/src"
-mkdir -p "$PROJECT_DIR/build"
 
 cat <<EOF > "$PROJECT_DIR/.gitignore"
-/build
+build/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+*.cmake
 EOF
 
 cat <<EOF > "$PROJECT_DIR/src/main.c"
@@ -37,4 +40,3 @@ add_executable($PROJECT_NAME \${SOURCES})
 EOF
 
 echo "Project '$PROJECT_NAME' created in $PROJECT_DIR"
-echo "You can now build your project using CMake!"

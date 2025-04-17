@@ -8,9 +8,14 @@ set "NAME=%~1"
 set "DIR=%cd%\%NAME%"
 
 mkdir "%DIR%\src" 2>nul
-mkdir "%DIR%\build" 2>nul
 
-> "%DIR%\.gitignore" echo /build
+> "%DIR%\.gitignore" (
+    echo build/ 
+    echo CMakeFiles/
+    echo CMakeCache.txt
+    echo Makefile
+    echo *.cmake
+) 
 
 > "%DIR%\src\main.c" (
     echo #include ^<stdio.h^>
@@ -34,4 +39,3 @@ mkdir "%DIR%\build" 2>nul
 )
 
 echo Project '%NAME%' created in %DIR%
-echo You can now build your project using CMake!
