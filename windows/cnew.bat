@@ -1,6 +1,6 @@
 @echo off
 if "%~1"=="" (
-    echo ^(v1.0.0^) Usage^: cnew ^<project_name^>
+    echo ^(v1.0.1^) Usage^: cnew ^<project_name^>
     exit /b 1
 )
 
